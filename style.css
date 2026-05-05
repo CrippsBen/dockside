@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  background: #0a0a0a;
+  color: #fafafa;
+  min-height: 100vh;
+  overflow-x: hidden;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero__background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+  filter: grayscale(20%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hero__name {
+  font-size: clamp(3rem, 12vw, 8rem);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.hero__tagline {
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin-top: 1rem;
+}
+
+.socials__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fafafa;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.socials__link:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.socials__link svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+/* Gallery */
+
+.gallery {
+  padding: 4rem 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.gallery__row {
+  overflow: hidden;
+  width: 100%;
+}
+
+.gallery__track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  will-change: transform;
+}
+
+.gallery__row--left .gallery__track {
+  animation: scroll-left 60s linear infinite;
+}
+
+.gallery__row--right .gallery__track {
+  animation: scroll-right 60s linear infinite;
+}
+
+.gallery__track img {
+  height: 280px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery__track img {
+    height: 200px;
+  }
+
+  .gallery {
+    padding: 2rem 0;
+    gap: 1rem;
+  }
+
+  .gallery__track {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .socials {
+    gap: 1.25rem;
+  }
+
+  .socials__link svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .gallery__track img {
+    height: 150px;
+  }
+}
